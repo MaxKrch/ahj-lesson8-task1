@@ -1,7 +1,7 @@
 export default class Connection {
 	constructor(url) {
-		this.wsUrl = `ws://${url}/chat`;
-		this.httpUrl = `http://${url}`;
+		this.wsUrl = `wss://${url}/chat`;
+		this.httpUrl = `https://${url}`;
 		this.contentTypeHeader = {
    		'Content-Type': 'application/json;charset=utf-8'
   	}

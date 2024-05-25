@@ -91,7 +91,6 @@ export default class App {
 			id: 0
 		}
 
-		this.loadActiveUsers();
 		this.render.addMessToChat(mess, user);	
 	}
 
@@ -190,7 +189,9 @@ export default class App {
 	}
 
 	byWSOpenConnect(event) {
-		if(this.state.WSreConnect.try > 0) {
+    this.loadActiveUsers();
+		
+    if(this.state.WSreConnect.try > 0) {
 			this.render.showModalSuccess('Ура! Чат снова доступен', this.state.modal.mess.idTimer);
 			this.state.modal.mess.idTimer = setTimeout(() => {
 				this.render.hideModalMess();
@@ -239,6 +240,7 @@ export default class App {
 		if(event.code === 1006) {
 			this.WSreConnect();
 		}
+		this.clearUserList()
 	}
 
 	createEventSubmitMessage() {

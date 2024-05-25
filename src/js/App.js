@@ -189,7 +189,6 @@ export default class App {
 	}
 
 	byWSOpenConnect(event) {
-    this.loadActiveUsers();
 		
     if(this.state.WSreConnect.try > 0) {
 			this.render.showModalSuccess('Ура! Чат снова доступен', this.state.modal.mess.idTimer);
@@ -207,6 +206,8 @@ export default class App {
 			try: 0,
 			id: null,
 		}
+    
+    this.loadActiveUsers();
 		// const message = `${this.state.user.nick} теперь в чате!`
 		// this.sendMessage(message, 'service')
 
@@ -314,7 +315,7 @@ export default class App {
 			
 		if(this.state.WSreConnect.try < 10) {
 			await this.createWS();
-			this.loadActiveUsers();
+			// this.loadActiveUsers();
       
 			this.state.WSreConnect.time += 5000;
 			this.state.WSreConnect.try += 1;	

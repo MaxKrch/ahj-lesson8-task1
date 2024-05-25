@@ -214,7 +214,6 @@ export default class App {
 
 	byWSComingMess(event) {
 		const message = JSON.parse(event.data);
-		console.log(message)
 		switch (message.type) {
 			case 'connect':
 				this.connectUser(message.data)
@@ -312,11 +311,11 @@ export default class App {
 		if(this.state.WSreConnect.id) {
 			return;
 		}
-	
-		
+			
 		if(this.state.WSreConnect.try < 10) {
 			await this.createWS();
-				
+			this.loadActiveUsers();
+      
 			this.state.WSreConnect.time += 5000;
 			this.state.WSreConnect.try += 1;	
 			

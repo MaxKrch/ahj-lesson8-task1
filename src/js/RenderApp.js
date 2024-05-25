@@ -436,7 +436,7 @@ export default class Render {
 	}
 
 	clearUserList() {
-
+		this.users.list.innerHTML = '';
 	}
 
 	clearChatNewMess() {
